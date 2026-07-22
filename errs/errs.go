@@ -25,13 +25,24 @@ func (e *AppError) Unwrap() error {
 
 // 业务错误码定义
 const (
-	CodeSuccess           = 0
-	CodeParamInvalid      = 40001 // 参数校验失败
-	CodeUserExist         = 40002 // 用户名已存在
+	CodeSuccess            = 0
+	CodeParamInvalid       = 40001 // 参数校验失败
+	CodeUserExist          = 40002 // 用户名已存在
+	CodeLoginUserNotExist  = 40003 // 登录用户不存在
+	CodeLoginPasswordError = 40004 // 登录密码错误
+
+	// JWT / 鉴权相关的错误码
+	CodeAccessTokenExpired    = 40101 // Access Token 已过期
+	CodeTokenSignatureInvalid = 40102 // Token 签名错误
+	CodeTokenMalformed        = 40103 // Token 格式错误
+	CodeTokenInvalid          = 40104 // Token 无效或未提供
+	CodeRefreshTokenExpired   = 40105 // Refresh Token 已过期
+
 	CodeDBError           = 50001 // 数据库查询错误
 	CodeInternalError     = 50002 // 内部错误
 	CodePasswordHashError = 50003 // 密码哈希错误
 	CodeInsertDBError     = 50004 // 插入数据库错误
+
 )
 
 // 预定义的业务错误
@@ -47,6 +58,49 @@ var (
 		HTTPCode: 500,
 		BizCode:  CodeDBError,
 		Message:  "数据库查询失败",
+		Err:      nil,
+	}
+
+	ErrLoginPasswordWrong = &AppError{
+		HTTPCode: 400,
+		BizCode:  CodeLoginPasswordError,
+		Message:  "登录密码错误",
+		Err:      nil,
+	}
+
+	// 预定义 JWT 相关错误
+	ErrAccessTokenExpired = &AppError{
+		HTTPCode: 401,
+		BizCode:  CodeAccessTokenExpired,
+		Message:  "Access Token 已过期，请调用刷新接口重新刷新",
+		Err:      nil,
+	}
+
+	ErrRefreshTokenExpired = &AppError{
+		HTTPCode: 401,
+		BizCode:  CodeRefreshTokenExpired,
+		Message:  "Refresh Token 已过期，请重新登录",
+		Err:      nil,
+	}
+
+	ErrTokenSignatureInvalid = &AppError{
+		HTTPCode: 401,
+		BizCode:  CodeTokenSignatureInvalid,
+		Message:  "Token 签名错误",
+		Err:      nil,
+	}
+
+	ErrTokenMalformed = &AppError{
+		HTTPCode: 401,
+		BizCode:  CodeTokenMalformed,
+		Message:  "Token 格式错误",
+		Err:      nil,
+	}
+
+	ErrTokenInvalid = &AppError{
+		HTTPCode: 401,
+		BizCode:  CodeTokenInvalid,
+		Message:  "Token 无效",
 		Err:      nil,
 	}
 )

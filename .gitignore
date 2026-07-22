@@ -1,0 +1,10 @@
+# 忽略编译后的二进制文件
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# 忽略 Go 的工作区和依赖文件
+vendor/
+go.work

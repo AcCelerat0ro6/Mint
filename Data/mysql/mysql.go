@@ -1,6 +1,7 @@
 package mysql // 假设你的包名
 
 import (
+	"errors"
 	"fmt"
 	"mint/errs"
 	"mint/models"
@@ -103,4 +104,17 @@ func InsertUser(user *models.User) error {
 		return errs.NewAppError(http.StatusInternalServerError, errs.CodeInsertDBError, "数据库插入用户失败", err)
 	}
 	return nil
+}
+
+func LoginUser(param *models.LoginParam) (*models.LoginUser, error) {
+	// 1. 从数据库中查询username对应的行记录
+	var loginUserInfo models.LoginUser
+	if err := db.Table("user").Select("id", "user_id", "username", "password").Where("username = ?", param.Username).First(&loginUserInfo).Error; err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return nil, errs.NewAppError(http.StatusBadRequest, errs.CodeLoginUserNotExist, "登录用户不存在", err)
+		}
+		return nil, fmt.Errorf("%w: %w", errs.ErrDataBaseWrong, err)
+	}
+
+	return &loginUserInfo, nil
 }

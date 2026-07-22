@@ -9,6 +9,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 	"go.uber.org/zap"
+
+	"mint/pkg/jwt"
 )
 
 // ErrorMiddleware 全局错误处理中间件
@@ -99,5 +101,46 @@ func ErrorMiddleware() gin.HandlerFunc {
 			})
 			return
 		}
+	}
+}
+
+// JWTAuthMiddleware 基于JWT的认证中间件
+func JWTAuthMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		// 1. 获取 Authorization header
+		authHeader := c.Request.Header.Get("Authorization")
+		if authHeader == "" {
+			c.Error(errs.NewAppError(http.StatusUnauthorized, errs.CodeTokenInvalid, "请求头中auth为空", nil))
+			c.Abort()
+			return
+		}
+
+		// 2. 按空格分割
+		parts := strings.SplitN(authHeader, " ", 2)
+		if !(len(parts) == 2 && parts[0] == "Bearer") {
+			c.Error(errs.NewAppError(http.StatusUnauthorized, errs.CodeTokenInvalid, "请求头中auth格式有误", nil))
+			c.Abort()
+			return
+		}
+
+		// 3. 解析 Token
+		mc, err := jwt.ParseToken(parts[1])
+		if err != nil {
+			// 直接将 pkg/jwt 返回的 AppError 送入全局错误处理中间件
+			c.Error(err)
+			c.Abort()
+			return
+		}
+
+		userID, err := mc.UserID()
+		if err != nil {
+			c.Error(err)
+			c.Abort()
+			return
+		}
+
+		// 4. 将当前请求的 userID 信息保存到请求的上下文 c 上
+		c.Set("userID", userID)
+		c.Next()
 	}
 }

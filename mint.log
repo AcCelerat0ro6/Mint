@@ -1,0 +1,24 @@
+{"level":"INFO","ts":"2026-07-18T17:44:41.351+0800","caller":"mint/main.go:79","msg":"Gin 服务器已启动，监听端口: 8081"}
+{"level":"INFO","ts":"2026-07-18T17:47:15.961+0800","caller":"logger/logger.go:106","msg":"/register","status":200,"method":"POST","path":"/register","query":"","ip":"::1","user-agent":"curl/8.21.0","errors":"","cost":0.0862779}
+{"level":"INFO","ts":"2026-07-18T19:07:18.210+0800","caller":"mint/main.go:94","msg":"接收到退出信号，准备优雅关闭 Gin 服务器..."}
+{"level":"INFO","ts":"2026-07-18T19:07:18.211+0800","caller":"mint/main.go:105","msg":"Gin 服务器已完美退出，所有正在处理的请求已完成！"}
+{"level":"INFO","ts":"2026-07-18T19:07:18.211+0800","caller":"redis/redis.go:40","msg":"redis正常退出"}
+{"level":"INFO","ts":"2026-07-18T19:07:18.211+0800","caller":"mysql/mysql.go:81","msg":"数据库连接池已安全关闭！"}
+{"level":"INFO","ts":"2026-07-19T17:06:34.259+0800","caller":"mysql/mysql.go:82","msg":"数据库连接池已安全关闭！"}
+{"level":"INFO","ts":"2026-07-19T17:06:54.319+0800","caller":"mint/main.go:79","msg":"Gin 服务器已启动，监听端口: 8081"}
+{"level":"INFO","ts":"2026-07-19T17:23:13.521+0800","caller":"logger/logger.go:106","msg":"/register","status":200,"method":"POST","path":"/register","query":"","ip":"::1","user-agent":"curl/8.21.0","errors":"","cost":0.0785985}
+{"level":"ERROR","ts":"2026-07-19T17:24:09.522+0800","caller":"controller/middleware.go:69","msg":"未知系统错误","error":"unexpected EOF","path":"/login"}
+{"level":"INFO","ts":"2026-07-19T17:24:09.522+0800","caller":"logger/logger.go:106","msg":"/login","status":500,"method":"POST","path":"/login","query":"","ip":"::1","user-agent":"curl/8.21.0","errors":"Error #01: unexpected EOF\n","cost":0.0020758}
+{"level":"ERROR","ts":"2026-07-19T17:27:29.464+0800","caller":"controller/middleware.go:69","msg":"未知系统错误","error":"EOF","path":"/login"}
+{"level":"INFO","ts":"2026-07-19T17:27:29.464+0800","caller":"logger/logger.go:106","msg":"/login","status":500,"method":"POST","path":"/login","query":"","ip":"::1","user-agent":"curl/8.21.0","errors":"Error #01: EOF\n","cost":0.0020734}
+{"level":"ERROR","ts":"2026-07-19T17:29:35.379+0800","caller":"controller/middleware.go:69","msg":"未知系统错误","error":"invalid character 'u' looking for beginning of object key string","path":"/login"}
+{"level":"INFO","ts":"2026-07-19T17:29:35.379+0800","caller":"logger/logger.go:106","msg":"/login","status":500,"method":"POST","path":"/login","query":"","ip":"::1","user-agent":"curl/8.21.0","errors":"Error #01: invalid character 'u' looking for beginning of object key string\n","cost":0}
+{"level":"ERROR","ts":"2026-07-19T17:31:27.117+0800","caller":"controller/middleware.go:69","msg":"未知系统错误","error":"invalid character 'u' looking for beginning of object key string","path":"/login"}
+{"level":"INFO","ts":"2026-07-19T17:31:27.117+0800","caller":"logger/logger.go:106","msg":"/login","status":500,"method":"POST","path":"/login","query":"","ip":"::1","user-agent":"curl/8.21.0","errors":"Error #01: invalid character 'u' looking for beginning of object key string\n","cost":0}
+{"level":"INFO","ts":"2026-07-19T17:32:29.171+0800","caller":"logger/logger.go:106","msg":"/login","status":200,"method":"POST","path":"/login","query":"","ip":"::1","user-agent":"curl/8.21.0","errors":"","cost":0.0691054}
+{"level":"INFO","ts":"2026-07-19T17:32:44.020+0800","caller":"logger/logger.go:106","msg":"/login","status":400,"method":"POST","path":"/login","query":"","ip":"::1","user-agent":"curl/8.21.0","errors":"Error #01: biz_code=40004, msg=登录密码错误\n","cost":0.0524029}
+{"level":"INFO","ts":"2026-07-19T17:32:54.344+0800","caller":"logger/logger.go:106","msg":"/login","status":400,"method":"POST","path":"/login","query":"","ip":"::1","user-agent":"curl/8.21.0","errors":"Error #01: biz_code=40003, msg=登录用户不存在, err=record not found\n","cost":0.0040175}
+{"level":"INFO","ts":"2026-07-19T17:41:59.153+0800","caller":"mint/main.go:94","msg":"接收到退出信号，准备优雅关闭 Gin 服务器..."}
+{"level":"INFO","ts":"2026-07-19T17:41:59.153+0800","caller":"mint/main.go:105","msg":"Gin 服务器已完美退出，所有正在处理的请求已完成！"}
+{"level":"INFO","ts":"2026-07-19T17:41:59.154+0800","caller":"redis/redis.go:40","msg":"redis正常退出"}
+{"level":"INFO","ts":"2026-07-19T17:41:59.155+0800","caller":"mysql/mysql.go:82","msg":"数据库连接池已安全关闭！"}

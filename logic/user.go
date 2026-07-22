@@ -3,8 +3,10 @@ package logic
 import (
 	"fmt"
 	"mint/Data/mysql"
+	"mint/Data/redis"
 	"mint/errs"
 	"mint/models"
+	"mint/pkg/jwt"
 	"mint/pkg/snowflake"
 
 	"golang.org/x/crypto/bcrypt"
@@ -46,4 +48,30 @@ func SignUp(param *models.RegisterParam) error {
 
 	// 4.2 保存用户到数据库
 	return mysql.InsertUser(user)
+}
+
+// Login 用户登录
+func Login(param *models.LoginParam) (string, string, error) {
+	// 1. 从数据库查询登录用户表信息
+	loginUserInfo, err := mysql.LoginUser(param)
+	if err != nil {
+		return "", "", err
+	}
+
+	// 2. 验证密码是否错误
+	if err := bcrypt.CompareHashAndPassword([]byte(loginUserInfo.Password), []byte(param.Password)); err != nil {
+		return "", "", errs.ErrLoginPasswordWrong
+	}
+
+	// 3. 生成 Access Token 和 Refresh Token
+	aToken, rToken, jti, err := jwt.GenTokens(loginUserInfo.UserID)
+	if err != nil {
+		return "", "", err
+	}
+
+	// 4. 将 JTI 存入 Redis，Key 为 user_id
+	if err := redis.SetRefreshToken(loginUserInfo.UserID, jti); err != nil {
+		return "", "", err
+	}
+	return aToken, rToken, nil
 }
