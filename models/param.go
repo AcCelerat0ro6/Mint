@@ -21,3 +21,10 @@ type LoginParam struct {
 type RefreshTokenParam struct {
 	RefreshToken string `json:"refresh_token" binding:"required"`
 }
+
+// CreatePostParam 创建帖子请求参数
+type CreatePostParam struct {
+	CommunityID uint64 `json:"community_id" binding:"required"`
+	Title       string `json:"title"        binding:"required"`
+	Content     string `json:"content"      binding:"required"`
+}

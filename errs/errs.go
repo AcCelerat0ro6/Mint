@@ -38,6 +38,12 @@ const (
 	CodeTokenInvalid          = 40104 // Token 无效或未提供
 	CodeRefreshTokenExpired   = 40105 // Refresh Token 已过期
 
+	// 社区相关错误码
+	CodeCommunityRecordNotFound = 40401 // 社区不存在
+
+	// 解析整数错误码
+	CodeParseUIntError = 40501 // 解析整数错误
+
 	CodeDBError           = 50001 // 数据库查询错误
 	CodeInternalError     = 50002 // 内部错误
 	CodePasswordHashError = 50003 // 密码哈希错误

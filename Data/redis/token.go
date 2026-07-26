@@ -1,13 +1,25 @@
 package redis
 
 import (
+	"errors"
 	"fmt"
+	"mint/errs"
 	"time"
 
+	goredis "github.com/redis/go-redis/v9"
 	"github.com/spf13/viper"
 )
 
 const refreshTokenKeyPrefix = "refresh_token:"
+
+type RefreshTokenStatus int
+
+const (
+	RefreshTokenStatusUnknown RefreshTokenStatus = iota
+	RefreshTokenStatusValid
+	RefreshTokenStatusExpired
+	RefreshTokenStatusInvalidated
+)
 
 func getRefreshTokenKey(userID uint64) string {
 	return fmt.Sprintf("%s%d", refreshTokenKeyPrefix, userID)
@@ -19,22 +31,31 @@ func SetRefreshToken(userID uint64, jti string) error {
 	if expire == 0 {
 		expire = 7 * 24 * time.Hour
 	}
-	return rdb.Set(ctx, getRefreshTokenKey(userID), jti, expire).Err()
+	if err := rdb.Set(ctx, getRefreshTokenKey(userID), jti, expire).Err(); err != nil {
+		return errs.NewAppError(500, errs.CodeInternalError, "保存 Refresh Token 登录态失败", err)
+	}
+	return nil
 }
 
 // CheckRefreshToken 检查 Refresh Token 是否存在且与 JTI 匹配
-func CheckRefreshToken(userID uint64, jti string) (bool, error) {
+func CheckRefreshToken(userID uint64, jti string) (RefreshTokenStatus, error) {
 	storedJTI, err := rdb.Get(ctx, getRefreshTokenKey(userID)).Result()
 	if err != nil {
-		return false, err // Redis 中不存在，可能是被踢下线或过期
+		if errors.Is(err, goredis.Nil) {
+			return RefreshTokenStatusExpired, nil
+		}
+		return RefreshTokenStatusUnknown, errs.NewAppError(500, errs.CodeInternalError, "读取 Refresh Token 登录态失败", err)
 	}
 	if storedJTI == jti {
-		return true, nil // 完全匹配
+		return RefreshTokenStatusValid, nil // 完全匹配
 	}
-	return false, nil // 不一致，说明在别处重新登录，当前 Token 被顶号作废
+	return RefreshTokenStatusInvalidated, nil // 不一致，说明在别处重新登录，当前 Token 被顶号作废
 }
 
 // DeleteRefreshToken 删除 Refresh Token（注销登录等使用）
 func DeleteRefreshToken(userID uint64) error {
-	return rdb.Del(ctx, getRefreshTokenKey(userID)).Err()
+	if err := rdb.Del(ctx, getRefreshTokenKey(userID)).Err(); err != nil {
+		return errs.NewAppError(500, errs.CodeInternalError, "删除 Refresh Token 登录态失败", err)
+	}
+	return nil
 }

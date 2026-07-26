@@ -22,3 +22,69 @@
 {"level":"INFO","ts":"2026-07-19T17:41:59.153+0800","caller":"mint/main.go:105","msg":"Gin 服务器已完美退出，所有正在处理的请求已完成！"}
 {"level":"INFO","ts":"2026-07-19T17:41:59.154+0800","caller":"redis/redis.go:40","msg":"redis正常退出"}
 {"level":"INFO","ts":"2026-07-19T17:41:59.155+0800","caller":"mysql/mysql.go:82","msg":"数据库连接池已安全关闭！"}
+{"level":"INFO","ts":"2026-07-22T18:52:12.752+0800","caller":"mysql/mysql.go:82","msg":"数据库连接池已安全关闭！"}
+{"level":"INFO","ts":"2026-07-22T18:55:20.701+0800","caller":"mint/main.go:83","msg":"Gin 服务器已启动，监听端口: 8081"}
+{"level":"ERROR","ts":"2026-07-22T18:55:32.958+0800","caller":"controller/middleware.go:71","msg":"未知系统错误","error":"invalid character 'Â' looking for beginning of object key string","path":"/register"}
+{"level":"INFO","ts":"2026-07-22T18:55:32.960+0800","caller":"logger/logger.go:106","msg":"/register","status":500,"method":"POST","path":"/register","query":"","ip":"127.0.0.1","user-agent":"curl/8.21.0","errors":"Error #01: invalid character 'Â' looking for beginning of object key string\n","cost":0.0025244}
+{"level":"INFO","ts":"2026-07-22T18:56:25.524+0800","caller":"logger/logger.go:106","msg":"/register","status":200,"method":"POST","path":"/register","query":"","ip":"127.0.0.1","user-agent":"curl/8.21.0","errors":"","cost":0.1233017}
+{"level":"INFO","ts":"2026-07-22T18:56:33.947+0800","caller":"logger/logger.go:106","msg":"/login","status":200,"method":"POST","path":"/login","query":"","ip":"127.0.0.1","user-agent":"curl/8.21.0","errors":"","cost":0.0555978}
+{"level":"INFO","ts":"2026-07-22T18:57:49.497+0800","caller":"logger/logger.go:106","msg":"/pong","status":200,"method":"GET","path":"/pong","query":"","ip":"127.0.0.1","user-agent":"curl/8.21.0","errors":"","cost":0}
+{"level":"INFO","ts":"2026-07-22T18:59:17.028+0800","caller":"logger/logger.go:106","msg":"/pong/public","status":200,"method":"GET","path":"/pong/public","query":"","ip":"127.0.0.1","user-agent":"curl/8.21.0","errors":"","cost":0}
+{"level":"INFO","ts":"2026-07-22T18:59:33.528+0800","caller":"logger/logger.go:106","msg":"/pong/public","status":200,"method":"GET","path":"/pong/public","query":"","ip":"127.0.0.1","user-agent":"curl/8.21.0","errors":"","cost":0}
+{"level":"INFO","ts":"2026-07-22T18:59:42.870+0800","caller":"logger/logger.go:106","msg":"/pong/public","status":200,"method":"GET","path":"/pong/public","query":"","ip":"127.0.0.1","user-agent":"curl/8.21.0","errors":"","cost":0}
+{"level":"INFO","ts":"2026-07-22T18:59:45.157+0800","caller":"logger/logger.go:106","msg":"/pong/public","status":200,"method":"GET","path":"/pong/public","query":"","ip":"127.0.0.1","user-agent":"curl/8.21.0","errors":"","cost":0}
+{"level":"INFO","ts":"2026-07-22T19:00:10.217+0800","caller":"logger/logger.go:106","msg":"/api/auth/refresh","status":200,"method":"POST","path":"/api/auth/refresh","query":"","ip":"127.0.0.1","user-agent":"curl/8.21.0","errors":"","cost":0.0028395}
+{"level":"INFO","ts":"2026-07-22T19:00:31.994+0800","caller":"logger/logger.go:106","msg":"/pong","status":401,"method":"GET","path":"/pong","query":"","ip":"127.0.0.1","user-agent":"curl/8.21.0","errors":"Error #01: biz_code=40104, msg=请求头中auth为空\n","cost":0}
+{"level":"INFO","ts":"2026-07-22T19:00:38.390+0800","caller":"logger/logger.go:106","msg":"/pong","status":401,"method":"GET","path":"/pong","query":"","ip":"127.0.0.1","user-agent":"curl/8.21.0","errors":"Error #01: biz_code=40104, msg=请求头中auth格式有误\n","cost":0}
+{"level":"INFO","ts":"2026-07-22T19:00:45.117+0800","caller":"logger/logger.go:106","msg":"/pong","status":401,"method":"GET","path":"/pong","query":"","ip":"127.0.0.1","user-agent":"curl/8.21.0","errors":"Error #01: biz_code=40102, msg=Token 签名错误\n","cost":0}
+{"level":"INFO","ts":"2026-07-23T00:00:00.819+0800","caller":"mint/main.go:98","msg":"接收到退出信号，准备优雅关闭 Gin 服务器..."}
+{"level":"INFO","ts":"2026-07-23T00:00:00.822+0800","caller":"mint/main.go:109","msg":"Gin 服务器已完美退出，所有正在处理的请求已完成！"}
+{"level":"INFO","ts":"2026-07-23T00:00:00.823+0800","caller":"redis/redis.go:40","msg":"redis正常退出"}
+{"level":"INFO","ts":"2026-07-23T00:00:00.824+0800","caller":"mysql/mysql.go:82","msg":"数据库连接池已安全关闭！"}
+{"level":"INFO","ts":"2026-07-23T16:41:40.991+0800","caller":"mysql/mysql.go:82","msg":"数据库连接池已安全关闭！"}
+{"level":"INFO","ts":"2026-07-23T16:42:58.404+0800","caller":"mint/main.go:83","msg":"Gin 服务器已启动，监听端口: 8081"}
+{"level":"INFO","ts":"2026-07-23T16:43:51.859+0800","caller":"logger/logger.go:106","msg":"/pong/public","status":200,"method":"GET","path":"/pong/public","query":"","ip":"127.0.0.1","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 Edg/150.0.0.0","errors":"","cost":0.0033807}
+{"level":"INFO","ts":"2026-07-23T16:43:51.859+0800","caller":"logger/logger.go:106","msg":"/","status":200,"method":"GET","path":"/","query":"","ip":"127.0.0.1","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 Edg/150.0.0.0","errors":"","cost":0.0010396}
+{"level":"INFO","ts":"2026-07-23T16:44:29.615+0800","caller":"logger/logger.go:106","msg":"/login","status":200,"method":"POST","path":"/login","query":"","ip":"127.0.0.1","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 Edg/150.0.0.0","errors":"","cost":0.1199062}
+{"level":"INFO","ts":"2026-07-23T16:44:40.473+0800","caller":"logger/logger.go:106","msg":"/pong","status":200,"method":"GET","path":"/pong","query":"","ip":"127.0.0.1","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 Edg/150.0.0.0","errors":"","cost":0.0027014}
+{"level":"INFO","ts":"2026-07-23T16:44:45.193+0800","caller":"logger/logger.go:106","msg":"/pong","status":200,"method":"GET","path":"/pong","query":"","ip":"127.0.0.1","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 Edg/150.0.0.0","errors":"","cost":0}
+{"level":"INFO","ts":"2026-07-23T16:48:50.529+0800","caller":"mint/main.go:98","msg":"接收到退出信号，准备优雅关闭 Gin 服务器..."}
+{"level":"INFO","ts":"2026-07-23T16:48:50.531+0800","caller":"mint/main.go:109","msg":"Gin 服务器已完美退出，所有正在处理的请求已完成！"}
+{"level":"INFO","ts":"2026-07-23T16:48:50.532+0800","caller":"redis/redis.go:40","msg":"redis正常退出"}
+{"level":"INFO","ts":"2026-07-23T16:48:50.533+0800","caller":"mysql/mysql.go:82","msg":"数据库连接池已安全关闭！"}
+{"level":"INFO","ts":"2026-07-23T16:58:32.162+0800","caller":"mint/main.go:83","msg":"Gin 服务器已启动，监听端口: 8081"}
+{"level":"INFO","ts":"2026-07-23T16:58:57.421+0800","caller":"logger/logger.go:106","msg":"/login","status":200,"method":"POST","path":"/login","query":"","ip":"127.0.0.1","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 Edg/150.0.0.0","errors":"","cost":0.0678667}
+{"level":"INFO","ts":"2026-07-23T16:58:57.615+0800","caller":"logger/logger.go:106","msg":"/pong","status":200,"method":"GET","path":"/pong","query":"","ip":"127.0.0.1","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 Edg/150.0.0.0","errors":"","cost":0}
+{"level":"INFO","ts":"2026-07-23T16:59:26.499+0800","caller":"logger/logger.go:106","msg":"/pong","status":200,"method":"GET","path":"/pong","query":"","ip":"127.0.0.1","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 Edg/150.0.0.0","errors":"","cost":0}
+{"level":"INFO","ts":"2026-07-23T18:35:34.161+0800","caller":"logger/logger.go:106","msg":"/pong","status":401,"method":"GET","path":"/pong","query":"","ip":"127.0.0.1","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 Edg/150.0.0.0","errors":"Error #01: biz_code=40101, msg=Access Token 已过期，请调用刷新接口重新刷新\n","cost":0.0010823}
+{"level":"INFO","ts":"2026-07-23T18:35:34.225+0800","caller":"logger/logger.go:106","msg":"/api/auth/refresh","status":200,"method":"POST","path":"/api/auth/refresh","query":"","ip":"127.0.0.1","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 Edg/150.0.0.0","errors":"","cost":0.0172875}
+{"level":"INFO","ts":"2026-07-23T18:35:34.234+0800","caller":"logger/logger.go:106","msg":"/pong","status":200,"method":"GET","path":"/pong","query":"","ip":"127.0.0.1","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 Edg/150.0.0.0","errors":"","cost":0}
+{"level":"INFO","ts":"2026-07-23T21:44:20.807+0800","caller":"mint/main.go:98","msg":"接收到退出信号，准备优雅关闭 Gin 服务器..."}
+{"level":"INFO","ts":"2026-07-23T21:44:20.808+0800","caller":"mint/main.go:109","msg":"Gin 服务器已完美退出，所有正在处理的请求已完成！"}
+{"level":"INFO","ts":"2026-07-23T21:44:20.808+0800","caller":"redis/redis.go:40","msg":"redis正常退出"}
+{"level":"INFO","ts":"2026-07-23T21:44:20.809+0800","caller":"mysql/mysql.go:82","msg":"数据库连接池已安全关闭！"}
+{"level":"INFO","ts":"2026-07-24T17:05:35.833+0800","caller":"mysql/mysql.go:82","msg":"数据库连接池已安全关闭！"}
+{"level":"INFO","ts":"2026-07-24T17:05:55.001+0800","caller":"mint/main.go:83","msg":"Gin 服务器已启动，监听端口: 8081"}
+{"level":"INFO","ts":"2026-07-24T17:06:38.839+0800","caller":"logger/logger.go:106","msg":"/api/v1/communitys","status":200,"method":"GET","path":"/api/v1/communitys","query":"","ip":"127.0.0.1","user-agent":"curl/8.21.0","errors":"","cost":0.0048784}
+{"level":"INFO","ts":"2026-07-24T17:07:02.734+0800","caller":"logger/logger.go:106","msg":"/api/v1/community/10002","status":200,"method":"GET","path":"/api/v1/community/10002","query":"","ip":"127.0.0.1","user-agent":"curl/8.21.0","errors":"","cost":0.0031062}
+{"level":"INFO","ts":"2026-07-24T17:07:13.367+0800","caller":"logger/logger.go:106","msg":"/api/v1/community/100023","status":404,"method":"GET","path":"/api/v1/community/100023","query":"","ip":"127.0.0.1","user-agent":"curl/8.21.0","errors":"Error #01: biz_code=40401, msg=ID对应的社区不存在, err=record not found\n","cost":0.0005052}
+{"level":"INFO","ts":"2026-07-24T17:07:16.536+0800","caller":"logger/logger.go:106","msg":"/api/v1/community/10002sd3","status":400,"method":"GET","path":"/api/v1/community/10002sd3","query":"","ip":"127.0.0.1","user-agent":"curl/8.21.0","errors":"Error #01: biz_code=40501, msg=传入的ID不是一个UNSIGNED INT类型, err=strconv.ParseUint: parsing \"10002sd3\": invalid syntax\n","cost":0}
+{"level":"INFO","ts":"2026-07-24T17:07:22.093+0800","caller":"logger/logger.go:106","msg":"/api/v1/community/10016","status":200,"method":"GET","path":"/api/v1/community/10016","query":"","ip":"127.0.0.1","user-agent":"curl/8.21.0","errors":"","cost":0.0006467}
+{"level":"INFO","ts":"2026-07-24T17:10:30.947+0800","caller":"mint/main.go:98","msg":"接收到退出信号，准备优雅关闭 Gin 服务器..."}
+{"level":"INFO","ts":"2026-07-24T17:10:30.947+0800","caller":"mint/main.go:109","msg":"Gin 服务器已完美退出，所有正在处理的请求已完成！"}
+{"level":"INFO","ts":"2026-07-24T17:10:30.948+0800","caller":"redis/redis.go:40","msg":"redis正常退出"}
+{"level":"INFO","ts":"2026-07-24T17:10:30.948+0800","caller":"mysql/mysql.go:82","msg":"数据库连接池已安全关闭！"}
+{"level":"INFO","ts":"2026-07-24T17:10:42.153+0800","caller":"mint/main.go:83","msg":"Gin 服务器已启动，监听端口: 8081"}
+{"level":"INFO","ts":"2026-07-24T17:11:04.980+0800","caller":"logger/logger.go:106","msg":"/api/v1/community/10001","status":200,"method":"GET","path":"/api/v1/community/10001","query":"","ip":"127.0.0.1","user-agent":"curl/8.21.0","errors":"","cost":0.0011826}
+{"level":"INFO","ts":"2026-07-24T22:48:04.117+0800","caller":"mint/main.go:98","msg":"接收到退出信号，准备优雅关闭 Gin 服务器..."}
+{"level":"INFO","ts":"2026-07-24T22:48:04.118+0800","caller":"mint/main.go:109","msg":"Gin 服务器已完美退出，所有正在处理的请求已完成！"}
+{"level":"INFO","ts":"2026-07-24T22:48:04.118+0800","caller":"redis/redis.go:40","msg":"redis正常退出"}
+{"level":"INFO","ts":"2026-07-24T22:48:04.119+0800","caller":"mysql/mysql.go:82","msg":"数据库连接池已安全关闭！"}
+{"level":"INFO","ts":"2026-07-26T15:29:20.439+0800","caller":"mysql/mysql.go:82","msg":"数据库连接池已安全关闭！"}
+{"level":"INFO","ts":"2026-07-26T15:29:46.646+0800","caller":"mint/main.go:83","msg":"Gin 服务器已启动，监听端口: 8081"}
+{"level":"INFO","ts":"2026-07-26T15:30:00.963+0800","caller":"logger/logger.go:106","msg":"/api/v1/login","status":400,"method":"POST","path":"/api/v1/login","query":"","ip":"127.0.0.1","user-agent":"curl/8.21.0","errors":"Error #01: biz_code=40003, msg=登录用户不存在, err=record not found\n","cost":0.024857}
+{"level":"INFO","ts":"2026-07-26T15:30:33.778+0800","caller":"logger/logger.go:106","msg":"/api/v1/login","status":200,"method":"POST","path":"/api/v1/login","query":"","ip":"127.0.0.1","user-agent":"curl/8.21.0","errors":"","cost":0.0555404}
+{"level":"INFO","ts":"2026-07-26T15:32:26.165+0800","caller":"logger/logger.go:106","msg":"/api/v1/createpost","status":404,"method":"POST","path":"/api/v1/createpost","query":"","ip":"127.0.0.1","user-agent":"curl/8.21.0","errors":"Error #01: biz_code=40401, msg=ID对应的社区不存在\n","cost":0.0129269}
+{"level":"ERROR","ts":"2026-07-26T15:34:14.632+0800","caller":"controller/middleware.go:71","msg":"未知系统错误","error":"invalid character '\"' after object key:value pair","path":"/api/v1/createpost"}
+{"level":"INFO","ts":"2026-07-26T15:34:14.632+0800","caller":"logger/logger.go:106","msg":"/api/v1/createpost","status":500,"method":"POST","path":"/api/v1/createpost","query":"","ip":"127.0.0.1","user-agent":"curl/8.21.0","errors":"Error #01: invalid character '\"' after object key:value pair\n","cost":0}
+{"level":"INFO","ts":"2026-07-26T15:37:18.762+0800","caller":"logger/logger.go:106","msg":"/api/v1/createpost","status":200,"method":"POST","path":"/api/v1/createpost","query":"","ip":"127.0.0.1","user-agent":"curl/8.21.0","errors":"","cost":0.0180723}

@@ -8,6 +8,7 @@ import (
 	"mint/Data/redis"
 	"mint/controller"
 	"mint/logger"
+	"mint/pkg/jwt"
 	"mint/pkg/snowflake"
 	"mint/routers"
 	"mint/settings"
@@ -63,7 +64,10 @@ func main() {
 		return
 	}
 
-	//	7. 注册路由
+	// 7. 初始化JWT配置
+	jwt.Init()
+
+	//	8. 注册路由
 	r := routers.SetUpRouter()
 
 	//	8. 启动服务并实现优雅关机

@@ -78,9 +78,17 @@ func RefreshTokenHandler(c *gin.Context) {
 	jti := rc.ID
 
 	// 3. 检查 Redis 中该 Refresh Token 的 JTI 是否匹配
-	valid, err := redis.CheckRefreshToken(userID, jti)
-	if err != nil || !valid {
-		c.Error(errs.NewAppError(http.StatusUnauthorized, errs.CodeTokenInvalid, "Refresh Token 已失效、被拉黑或在别处重新登录", err))
+	status, err := redis.CheckRefreshToken(userID, jti)
+	if err != nil {
+		c.Error(err)
+		return
+	}
+	if status == redis.RefreshTokenStatusExpired {
+		c.Error(errs.ErrRefreshTokenExpired)
+		return
+	}
+	if status == redis.RefreshTokenStatusInvalidated {
+		c.Error(errs.NewAppError(http.StatusUnauthorized, errs.CodeTokenInvalid, "Refresh Token 已失效、被拉黑或在别处重新登录", nil))
 		return
 	}
 
@@ -93,7 +101,7 @@ func RefreshTokenHandler(c *gin.Context) {
 
 	// 5. 将新的 JTI 存入 Redis，实现 Token 轮转
 	if err := redis.SetRefreshToken(userID, newJTI); err != nil {
-		c.Error(errs.NewAppError(http.StatusInternalServerError, errs.CodeInternalError, "保存新Token失败", err))
+		c.Error(err)
 		return
 	}
 

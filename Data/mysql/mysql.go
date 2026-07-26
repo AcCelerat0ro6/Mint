@@ -1,4 +1,4 @@
-package mysql // 假设你的包名
+package mysql
 
 import (
 	"errors"
