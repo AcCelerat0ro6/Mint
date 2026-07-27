@@ -41,6 +41,9 @@ const (
 	// 社区相关错误码
 	CodeCommunityRecordNotFound = 40401 // 社区不存在
 
+	// 帖子相关错误码
+	CodePostRecordNotFound = 40601 // 帖子不存在
+
 	// 解析整数错误码
 	CodeParseUIntError = 40501 // 解析整数错误
 

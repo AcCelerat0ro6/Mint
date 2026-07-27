@@ -88,3 +88,65 @@
 {"level":"ERROR","ts":"2026-07-26T15:34:14.632+0800","caller":"controller/middleware.go:71","msg":"未知系统错误","error":"invalid character '\"' after object key:value pair","path":"/api/v1/createpost"}
 {"level":"INFO","ts":"2026-07-26T15:34:14.632+0800","caller":"logger/logger.go:106","msg":"/api/v1/createpost","status":500,"method":"POST","path":"/api/v1/createpost","query":"","ip":"127.0.0.1","user-agent":"curl/8.21.0","errors":"Error #01: invalid character '\"' after object key:value pair\n","cost":0}
 {"level":"INFO","ts":"2026-07-26T15:37:18.762+0800","caller":"logger/logger.go:106","msg":"/api/v1/createpost","status":200,"method":"POST","path":"/api/v1/createpost","query":"","ip":"127.0.0.1","user-agent":"curl/8.21.0","errors":"","cost":0.0180723}
+{"level":"INFO","ts":"2026-07-26T15:53:20.481+0800","caller":"mint/main.go:98","msg":"接收到退出信号，准备优雅关闭 Gin 服务器..."}
+{"level":"INFO","ts":"2026-07-26T15:53:20.481+0800","caller":"mint/main.go:109","msg":"Gin 服务器已完美退出，所有正在处理的请求已完成！"}
+{"level":"INFO","ts":"2026-07-26T15:53:20.482+0800","caller":"redis/redis.go:40","msg":"redis正常退出"}
+{"level":"INFO","ts":"2026-07-26T15:53:20.482+0800","caller":"mysql/mysql.go:82","msg":"数据库连接池已安全关闭！"}
+{"level":"INFO","ts":"2026-07-26T16:45:04.612+0800","caller":"mint/main.go:83","msg":"Gin 服务器已启动，监听端口: 8081"}
+{"level":"INFO","ts":"2026-07-26T16:46:14.290+0800","caller":"logger/logger.go:106","msg":"/api/v1/posts/3738965085523968","status":200,"method":"GET","path":"/api/v1/posts/3738965085523968","query":"","ip":"::1","user-agent":"curl/8.21.0","errors":"","cost":0.0035662}
+{"level":"INFO","ts":"2026-07-26T17:24:12.488+0800","caller":"mint/main.go:98","msg":"接收到退出信号，准备优雅关闭 Gin 服务器..."}
+{"level":"INFO","ts":"2026-07-26T17:24:12.492+0800","caller":"mint/main.go:109","msg":"Gin 服务器已完美退出，所有正在处理的请求已完成！"}
+{"level":"INFO","ts":"2026-07-26T17:24:12.495+0800","caller":"redis/redis.go:40","msg":"redis正常退出"}
+{"level":"INFO","ts":"2026-07-26T17:24:12.501+0800","caller":"mysql/mysql.go:82","msg":"数据库连接池已安全关闭！"}
+{"level":"INFO","ts":"2026-07-27T16:23:38.058+0800","caller":"mint/main.go:83","msg":"Gin 服务器已启动，监听端口: 8081"}
+{"level":"INFO","ts":"2026-07-27T16:26:30.943+0800","caller":"logger/logger.go:106","msg":"/posts/3738965085523968","status":404,"method":"GET","path":"/posts/3738965085523968","query":"","ip":"::1","user-agent":"curl/8.21.0","errors":"","cost":0}
+{"level":"INFO","ts":"2026-07-27T16:26:49.833+0800","caller":"logger/logger.go:106","msg":"/posts/3738965085523968","status":404,"method":"GET","path":"/posts/3738965085523968","query":"","ip":"::1","user-agent":"curl/8.21.0","errors":"","cost":0}
+{"level":"INFO","ts":"2026-07-27T16:27:14.610+0800","caller":"logger/logger.go:106","msg":"/api/v1/'posts/3738965085523968","status":404,"method":"GET","path":"/api/v1/'posts/3738965085523968","query":"","ip":"::1","user-agent":"curl/8.21.0","errors":"","cost":0}
+{"level":"INFO","ts":"2026-07-27T16:27:19.953+0800","caller":"logger/logger.go:106","msg":"/api/v1/posts/3738965085523968","status":200,"method":"GET","path":"/api/v1/posts/3738965085523968","query":"","ip":"::1","user-agent":"curl/8.21.0","errors":"","cost":0.0594657}
+{"level":"INFO","ts":"2026-07-27T16:33:08.858+0800","caller":"mint/main.go:98","msg":"接收到退出信号，准备优雅关闭 Gin 服务器..."}
+{"level":"INFO","ts":"2026-07-27T16:33:08.859+0800","caller":"mint/main.go:109","msg":"Gin 服务器已完美退出，所有正在处理的请求已完成！"}
+{"level":"INFO","ts":"2026-07-27T16:33:08.860+0800","caller":"redis/redis.go:40","msg":"redis正常退出"}
+{"level":"INFO","ts":"2026-07-27T16:33:08.861+0800","caller":"mysql/mysql.go:82","msg":"数据库连接池已安全关闭！"}
+{"level":"INFO","ts":"2026-07-27T16:33:10.042+0800","caller":"mint/main.go:83","msg":"Gin 服务器已启动，监听端口: 8081"}
+{"level":"INFO","ts":"2026-07-27T16:33:11.113+0800","caller":"mint/main.go:98","msg":"接收到退出信号，准备优雅关闭 Gin 服务器..."}
+{"level":"INFO","ts":"2026-07-27T16:33:11.113+0800","caller":"mint/main.go:109","msg":"Gin 服务器已完美退出，所有正在处理的请求已完成！"}
+{"level":"INFO","ts":"2026-07-27T16:33:11.114+0800","caller":"redis/redis.go:40","msg":"redis正常退出"}
+{"level":"INFO","ts":"2026-07-27T16:33:11.114+0800","caller":"mysql/mysql.go:82","msg":"数据库连接池已安全关闭！"}
+{"level":"INFO","ts":"2026-07-27T16:33:32.023+0800","caller":"mint/main.go:83","msg":"Gin 服务器已启动，监听端口: 8081"}
+{"level":"INFO","ts":"2026-07-27T16:33:34.407+0800","caller":"logger/logger.go:106","msg":"/api/v1/posts/3738965085523968","status":200,"method":"GET","path":"/api/v1/posts/3738965085523968","query":"","ip":"::1","user-agent":"curl/8.21.0","errors":"","cost":0.003669}
+{"level":"INFO","ts":"2026-07-27T16:37:11.687+0800","caller":"mint/main.go:98","msg":"接收到退出信号，准备优雅关闭 Gin 服务器..."}
+{"level":"INFO","ts":"2026-07-27T16:37:11.688+0800","caller":"mint/main.go:109","msg":"Gin 服务器已完美退出，所有正在处理的请求已完成！"}
+{"level":"INFO","ts":"2026-07-27T16:37:11.689+0800","caller":"redis/redis.go:40","msg":"redis正常退出"}
+{"level":"INFO","ts":"2026-07-27T16:37:11.689+0800","caller":"mysql/mysql.go:82","msg":"数据库连接池已安全关闭！"}
+{"level":"INFO","ts":"2026-07-27T16:37:23.860+0800","caller":"mint/main.go:83","msg":"Gin 服务器已启动，监听端口: 8081"}
+{"level":"INFO","ts":"2026-07-27T16:37:30.950+0800","caller":"logger/logger.go:106","msg":"/api/v1/posts/3738965085523968","status":200,"method":"GET","path":"/api/v1/posts/3738965085523968","query":"","ip":"::1","user-agent":"curl/8.21.0","errors":"","cost":0.0027287}
+{"level":"INFO","ts":"2026-07-27T16:38:59.786+0800","caller":"logger/logger.go:106","msg":"/api/v1/posts/3738965085523968","status":200,"method":"GET","path":"/api/v1/posts/3738965085523968","query":"","ip":"::1","user-agent":"curl/8.21.0","errors":"","cost":0.0110797}
+{"level":"INFO","ts":"2026-07-27T16:39:01.621+0800","caller":"mint/main.go:98","msg":"接收到退出信号，准备优雅关闭 Gin 服务器..."}
+{"level":"INFO","ts":"2026-07-27T16:39:01.621+0800","caller":"mint/main.go:109","msg":"Gin 服务器已完美退出，所有正在处理的请求已完成！"}
+{"level":"INFO","ts":"2026-07-27T16:39:01.621+0800","caller":"redis/redis.go:40","msg":"redis正常退出"}
+{"level":"INFO","ts":"2026-07-27T16:39:01.622+0800","caller":"mysql/mysql.go:82","msg":"数据库连接池已安全关闭！"}
+{"level":"INFO","ts":"2026-07-27T16:39:14.487+0800","caller":"mint/main.go:83","msg":"Gin 服务器已启动，监听端口: 8081"}
+{"level":"INFO","ts":"2026-07-27T16:39:24.438+0800","caller":"logger/logger.go:106","msg":"/api/v1/posts/3738965085523968","status":200,"method":"GET","path":"/api/v1/posts/3738965085523968","query":"","ip":"::1","user-agent":"curl/8.21.0","errors":"","cost":0.0037639}
+{"level":"INFO","ts":"2026-07-27T16:41:32.946+0800","caller":"mint/main.go:98","msg":"接收到退出信号，准备优雅关闭 Gin 服务器..."}
+{"level":"INFO","ts":"2026-07-27T16:41:32.946+0800","caller":"mint/main.go:109","msg":"Gin 服务器已完美退出，所有正在处理的请求已完成！"}
+{"level":"INFO","ts":"2026-07-27T16:41:32.946+0800","caller":"redis/redis.go:40","msg":"redis正常退出"}
+{"level":"INFO","ts":"2026-07-27T16:41:32.947+0800","caller":"mysql/mysql.go:82","msg":"数据库连接池已安全关闭！"}
+{"level":"INFO","ts":"2026-07-27T16:41:45.055+0800","caller":"mint/main.go:83","msg":"Gin 服务器已启动，监听端口: 8081"}
+{"level":"INFO","ts":"2026-07-27T16:41:48.917+0800","caller":"logger/logger.go:106","msg":"/api/v1/posts/3738965085523968","status":200,"method":"GET","path":"/api/v1/posts/3738965085523968","query":"","ip":"::1","user-agent":"curl/8.21.0","errors":"","cost":0.0115586}
+{"level":"INFO","ts":"2026-07-27T16:49:49.850+0800","caller":"mint/main.go:98","msg":"接收到退出信号，准备优雅关闭 Gin 服务器..."}
+{"level":"INFO","ts":"2026-07-27T16:49:49.850+0800","caller":"mint/main.go:109","msg":"Gin 服务器已完美退出，所有正在处理的请求已完成！"}
+{"level":"INFO","ts":"2026-07-27T16:49:49.851+0800","caller":"redis/redis.go:40","msg":"redis正常退出"}
+{"level":"INFO","ts":"2026-07-27T16:49:49.851+0800","caller":"mysql/mysql.go:82","msg":"数据库连接池已安全关闭！"}
+{"level":"INFO","ts":"2026-07-27T16:49:51.086+0800","caller":"mint/main.go:83","msg":"Gin 服务器已启动，监听端口: 8081"}
+{"level":"INFO","ts":"2026-07-27T16:49:51.540+0800","caller":"mint/main.go:98","msg":"接收到退出信号，准备优雅关闭 Gin 服务器..."}
+{"level":"INFO","ts":"2026-07-27T16:49:51.540+0800","caller":"mint/main.go:109","msg":"Gin 服务器已完美退出，所有正在处理的请求已完成！"}
+{"level":"INFO","ts":"2026-07-27T16:49:51.541+0800","caller":"redis/redis.go:40","msg":"redis正常退出"}
+{"level":"INFO","ts":"2026-07-27T16:49:51.541+0800","caller":"mysql/mysql.go:82","msg":"数据库连接池已安全关闭！"}
+{"level":"INFO","ts":"2026-07-27T16:50:06.257+0800","caller":"mint/main.go:83","msg":"Gin 服务器已启动，监听端口: 8081"}
+{"level":"INFO","ts":"2026-07-27T16:50:16.505+0800","caller":"logger/logger.go:106","msg":"/api/v1/posts/3738965085523968","status":200,"method":"GET","path":"/api/v1/posts/3738965085523968","query":"","ip":"::1","user-agent":"curl/8.21.0","errors":"","cost":0.0032938}
+{"level":"INFO","ts":"2026-07-27T16:55:05.878+0800","caller":"mint/main.go:98","msg":"接收到退出信号，准备优雅关闭 Gin 服务器..."}
+{"level":"INFO","ts":"2026-07-27T16:55:05.880+0800","caller":"mint/main.go:109","msg":"Gin 服务器已完美退出，所有正在处理的请求已完成！"}
+{"level":"INFO","ts":"2026-07-27T16:55:05.880+0800","caller":"redis/redis.go:40","msg":"redis正常退出"}
+{"level":"INFO","ts":"2026-07-27T16:55:05.880+0800","caller":"mysql/mysql.go:82","msg":"数据库连接池已安全关闭！"}
+{"level":"INFO","ts":"2026-07-27T16:55:18.749+0800","caller":"mint/main.go:83","msg":"Gin 服务器已启动，监听端口: 8081"}
+{"level":"INFO","ts":"2026-07-27T16:55:21.313+0800","caller":"logger/logger.go:106","msg":"/api/v1/posts/3738965085523968","status":200,"method":"GET","path":"/api/v1/posts/3738965085523968","query":"","ip":"::1","user-agent":"curl/8.21.0","errors":"","cost":0.002381}

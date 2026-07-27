@@ -37,6 +37,9 @@ func SetUpRouter() *gin.Engine {
 	// 获取指定ID的社区路由
 	v1.GET("/community/:id", controller.GetCommunityHandler)
 
+	// 获取帖子详情路由
+	v1.GET("/posts/:id", controller.GetPostDetailHandler)
+
 	// 需要验证的路由组
 	authGroup := v1.Group("/")
 	authGroup.Use(controller.JWTAuthMiddleware())

@@ -23,3 +23,7 @@ func CreatePost(post *models.CreatePostParam, userID uint64) (uint64, error) {
 
 	return uint64(postID), nil
 }
+
+func GetPostDetailByID(postID uint64) (*models.Post, error) {
+	return mysql.GetPostDetailByID(postID)
+}

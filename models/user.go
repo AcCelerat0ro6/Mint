@@ -27,3 +27,15 @@ type LoginUser struct {
 	Username string `gorm:"column:username"`
 	Password string `gorm:"column:password"`
 }
+
+// 社区作者用户表模型
+type Author struct {
+	UserID   uint64  `gorm:"column:user_id"     json:"author_id"`
+	Username string  `gorm:"column:username"    json:"author_name"`
+	Email    *string `gorm:"column:email"       json:"author_email"`
+	Gender   int8    `gorm:"column:gender"      json:"author_gender"`
+}
+
+func (a *Author) TableName() string {
+	return "user"
+}
