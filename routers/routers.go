@@ -4,6 +4,7 @@ import (
 	"mint/controller"
 	"mint/logger"
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -38,7 +39,10 @@ func SetUpRouter() *gin.Engine {
 	v1.GET("/community/:id", controller.GetCommunityHandler)
 
 	// 获取帖子详情路由
-	v1.GET("/posts/:id", controller.GetPostDetailHandler)
+	v1.GET("/post/:id", controller.GetPostDetailHandler)
+
+	// 获取帖子列表路由
+	v1.GET("/post", controller.GetPostListHandler)
 
 	// 需要验证的路由组
 	authGroup := v1.Group("/")
@@ -49,7 +53,7 @@ func SetUpRouter() *gin.Engine {
 			userID, _ := c.Get("userID")
 			c.JSON(http.StatusOK, gin.H{
 				"message": "pong authenticated",
-				"userID":  userID,
+				"userID":  strconv.FormatUint(userID.(uint64), 10),
 			})
 		})
 

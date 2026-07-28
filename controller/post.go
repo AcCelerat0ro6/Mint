@@ -54,3 +54,50 @@ func GetPostDetailHandler(c *gin.Context) {
 		"post":    post,
 	})
 }
+
+func GetPostListHandler(c *gin.Context) {
+	// 1. 获取参数并进行参数校验
+	var (
+		page, size int
+		err        error
+	)
+
+	pagestr, sizestr := c.Query("page"), c.Query("size")
+
+	if pagestr == "" {
+		pagestr = "1"
+	}
+
+	if sizestr == "" {
+		sizestr = "10"
+	}
+
+	if page, err = strconv.Atoi(pagestr); err != nil {
+		c.Error(errs.NewAppError(400, errs.CodeLimitParamError, "分页参数格式错误", err))
+		return
+	}
+	if page <= 0 {
+		page = 1
+	}
+
+	if size, err = strconv.Atoi(sizestr); err != nil {
+		c.Error(errs.NewAppError(400, errs.CodeLimitParamError, "分页参数格式错误", err))
+		return
+	}
+	if size <= 0 || size > 100 {
+		size = 10
+	}
+
+	// 2. 获取帖子列表数据
+	postList, err := logic.GetPostList(page, size)
+	if err != nil {
+		c.Error(err)
+		return
+	}
+
+	// 2. 返回帖子列表
+	c.JSON(http.StatusOK, gin.H{
+		"message":  "帖子列表查询成功",
+		"postList": postList,
+	})
+}

@@ -43,6 +43,8 @@ const (
 
 	// 帖子相关错误码
 	CodePostRecordNotFound = 40601 // 帖子不存在
+	CodePostListEmpty      = 40602 // 查询目标范围内帖子列表为空
+	CodeLimitParamError    = 40603 // 分页参数格式错误
 
 	// 解析整数错误码
 	CodeParseUIntError = 40501 // 解析整数错误

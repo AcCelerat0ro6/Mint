@@ -27,3 +27,7 @@ func CreatePost(post *models.CreatePostParam, userID uint64) (uint64, error) {
 func GetPostDetailByID(postID uint64) (*models.Post, error) {
 	return mysql.GetPostDetailByID(postID)
 }
+
+func GetPostList(page, size int) ([]models.Post, error) {
+	return mysql.GetPostList(page, size)
+}

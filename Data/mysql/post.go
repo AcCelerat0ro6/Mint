@@ -43,3 +43,34 @@ func GetPostDetailByID(postID uint64) (*models.Post, error) {
 
 	return &post, nil
 }
+
+func GetPostList(page, size int) ([]models.Post, error) {
+	var postList []models.Post
+
+	// 1. 计算偏移量
+	offset := (page - 1) * size
+
+	// 2. 进行延迟关联优化 ，避免查询所有关联数据。
+
+	// 2.1 构建子查询 (仅查询自增主键 id 以实现覆盖索引，防止回表)
+	subQuery := db.Model(&models.Post{}).Select("id").Order("created_at desc").Limit(size).Offset(offset)
+
+	// 2.2 执行查询 (使用 id 进行延迟关联)
+	err := db.Model(&models.Post{}).
+		Joins("INNER JOIN (?) AS t2 ON post.id = t2.id", subQuery).
+		Joins("Author").
+		Joins("MainCommunity").
+		Joins("Content").
+		Order("post.created_at desc").
+		Find(&postList).Error
+
+	if err != nil {
+		return nil, errs.NewAppError(500, errs.CodeDBError, "数据库查询失败", err)
+	}
+
+	if len(postList) == 0 {
+		return nil, errs.NewAppError(404, errs.CodePostListEmpty, "查询目标范围内帖子列表为空", nil)
+	}
+
+	return postList, nil
+}

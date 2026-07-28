@@ -150,3 +150,12 @@
 {"level":"INFO","ts":"2026-07-27T16:55:05.880+0800","caller":"mysql/mysql.go:82","msg":"数据库连接池已安全关闭！"}
 {"level":"INFO","ts":"2026-07-27T16:55:18.749+0800","caller":"mint/main.go:83","msg":"Gin 服务器已启动，监听端口: 8081"}
 {"level":"INFO","ts":"2026-07-27T16:55:21.313+0800","caller":"logger/logger.go:106","msg":"/api/v1/posts/3738965085523968","status":200,"method":"GET","path":"/api/v1/posts/3738965085523968","query":"","ip":"::1","user-agent":"curl/8.21.0","errors":"","cost":0.002381}
+{"level":"INFO","ts":"2026-07-27T17:06:21.976+0800","caller":"mint/main.go:98","msg":"接收到退出信号，准备优雅关闭 Gin 服务器..."}
+{"level":"INFO","ts":"2026-07-28T18:38:54.820+0800","caller":"mint/main.go:83","msg":"Gin 服务器已启动，监听端口: 8081"}
+{"level":"INFO","ts":"2026-07-28T18:40:34.278+0800","caller":"logger/logger.go:106","msg":"/api/v1/post","status":200,"method":"GET","path":"/api/v1/post","query":"","ip":"::1","user-agent":"curl/8.21.0","errors":"","cost":0.0782475}
+{"level":"INFO","ts":"2026-07-28T18:45:01.897+0800","caller":"logger/logger.go:106","msg":"/api/v1/post","status":200,"method":"GET","path":"/api/v1/post","query":"page=3&size=1","ip":"::1","user-agent":"curl/8.21.0","errors":"","cost":0.0059586}
+{"level":"INFO","ts":"2026-07-28T18:45:22.483+0800","caller":"logger/logger.go:106","msg":"/api/v1/post","status":200,"method":"GET","path":"/api/v1/post","query":"page=3&size=1","ip":"::1","user-agent":"curl/8.21.0","errors":"","cost":0.0011221}
+{"level":"INFO","ts":"2026-07-28T18:45:28.322+0800","caller":"logger/logger.go:106","msg":"/api/v1/post","status":200,"method":"GET","path":"/api/v1/post","query":"page=4&size=1","ip":"::1","user-agent":"curl/8.21.0","errors":"","cost":0.0012878}
+{"level":"INFO","ts":"2026-07-28T18:45:43.464+0800","caller":"logger/logger.go:106","msg":"/api/v1/post","status":200,"method":"GET","path":"/api/v1/post","query":"page=1&size=10","ip":"::1","user-agent":"curl/8.21.0","errors":"","cost":0.0015659}
+{"level":"INFO","ts":"2026-07-28T18:47:55.922+0800","caller":"logger/logger.go:106","msg":"/api/v1/post","status":200,"method":"GET","path":"/api/v1/post","query":"page=1&size=10","ip":"::1","user-agent":"curl/8.21.0","errors":"","cost":0.0013559}
+{"level":"INFO","ts":"2026-07-28T18:48:43.005+0800","caller":"logger/logger.go:106","msg":"/api/v1/post","status":200,"method":"GET","path":"/api/v1/post","query":"page=1&size=10","ip":"::1","user-agent":"curl/8.21.0","errors":"","cost":0.0015147}
