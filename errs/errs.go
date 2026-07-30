@@ -49,6 +49,16 @@ const (
 	// 解析整数错误码
 	CodeParseUIntError = 40501 // 解析整数错误
 
+	// 投票相关错误码
+	CodeVoteExpiredPost = 40901 // 帖子已过期，不能投票
+
+	// Redis 相关错误码
+	CodeRedisQueryError            = 50005 // Redis 查找错误
+	CodeRedisKeyNotExist           = 50006 // Redis 键不存在
+	CodeRedisModifyZSetMemberError = 50007 // Redis 更新 ZSet 成员错误
+	CodeRedisZSetMemberNotExist    = 40601 // Redis ZSet 成员不存在
+	CodeRedisZSetInsertError       = 50008 // Redis 插入 ZSet 成员错误
+
 	CodeDBError           = 50001 // 数据库查询错误
 	CodeInternalError     = 50002 // 内部错误
 	CodePasswordHashError = 50003 // 密码哈希错误

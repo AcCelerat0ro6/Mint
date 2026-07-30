@@ -2,8 +2,10 @@ package logic
 
 import (
 	"mint/Data/mysql"
+	"mint/Data/redis"
 	"mint/models"
 	"mint/pkg/snowflake"
+	"strconv"
 )
 
 func CreatePost(post *models.CreatePostParam, userID uint64) (uint64, error) {
@@ -18,6 +20,11 @@ func CreatePost(post *models.CreatePostParam, userID uint64) (uint64, error) {
 	// 3. 保存帖子内容到数据库
 	err := mysql.CreatePost(post, userID, uint64(postID))
 	if err != nil {
+		return 0, err
+	}
+
+	// 4. 保存初始帖子分数和帖子时间到Redis
+	if err := redis.SavePostScoreAndTime(strconv.FormatInt(postID, 10)); err != nil {
 		return 0, err
 	}
 

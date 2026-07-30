@@ -47,19 +47,21 @@ func SetUpRouter() *gin.Engine {
 	// 需要验证的路由组
 	authGroup := v1.Group("/")
 	authGroup.Use(controller.JWTAuthMiddleware())
-	{
-		// 验证的pong路由
-		authGroup.GET("/pong", func(c *gin.Context) {
-			userID, _ := c.Get("userID")
-			c.JSON(http.StatusOK, gin.H{
-				"message": "pong authenticated",
-				"userID":  strconv.FormatUint(userID.(uint64), 10),
-			})
-		})
 
-		// 创建帖子路由
-		authGroup.POST("/createpost", controller.CreatePostHandler)
-	}
+	// 验证的pong路由
+	authGroup.GET("/pong", func(c *gin.Context) {
+		userID, _ := c.Get("userID")
+		c.JSON(http.StatusOK, gin.H{
+			"message": "pong authenticated",
+			"userID":  strconv.FormatUint(userID.(uint64), 10),
+		})
+	})
+
+	// 创建帖子路由
+	authGroup.POST("/createpost", controller.CreatePostHandler)
+
+	// 投票路由
+	authGroup.POST("/vote", controller.PostVoteController)
 
 	return r
 }
