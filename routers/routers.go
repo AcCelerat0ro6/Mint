@@ -42,7 +42,10 @@ func SetUpRouter() *gin.Engine {
 	v1.GET("/post/:id", controller.GetPostDetailHandler)
 
 	// 获取帖子列表路由
-	v1.GET("/post", controller.GetPostListHandler)
+	v1.GET("/posts", controller.GetPostListHandler)
+
+	// 根据时间或分数获取帖子列表
+	v1.GET("/posts/sorted", controller.GetPostListByTimeOrScoreHandler)
 
 	// 需要验证的路由组
 	authGroup := v1.Group("/")

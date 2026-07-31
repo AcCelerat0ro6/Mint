@@ -32,6 +32,30 @@ func CreatePostHandler(c *gin.Context) {
 	})
 }
 
+// GetPageSizeAndOrderParam 获取分页参数和排序参数
+func GetPageSizeAndOrderParam(c *gin.Context) (*models.GetPostListByTimeOrScoreParam, error) {
+	// 1. 获取参数并进行参数校验
+	var param models.GetPostListByTimeOrScoreParam
+
+	if err := c.ShouldBindQuery(&param); err != nil {
+		return nil, err
+	}
+
+	if param.Page <= 0 {
+		param.Page = 1
+	}
+
+	if param.Size <= 0 || param.Size > 100 {
+		param.Size = 10
+	}
+	if param.Order == "" {
+		param.Order = "score"
+	}
+
+	return &param, nil
+}
+
+// GetPostDetailHandler 获取帖子详情
 func GetPostDetailHandler(c *gin.Context) {
 	// 1. 获取帖子ID
 	postID, err := strconv.ParseUint(c.Param("id"), 10, 64)
@@ -98,6 +122,25 @@ func GetPostListHandler(c *gin.Context) {
 	// 2. 返回帖子列表
 	c.JSON(http.StatusOK, gin.H{
 		"message":  "帖子列表查询成功",
+		"postList": postList,
+	})
+}
+
+// GetPostListByTimeOrScoreHandler 根据时间或分数获取帖子列表
+func GetPostListByTimeOrScoreHandler(c *gin.Context) {
+	// 1. 获取page 和 size 分页参数
+	param, err := GetPageSizeAndOrderParam(c)
+	if err != nil {
+		c.Error(err)
+		return
+	}
+	postList, err := logic.GetPostListByTimeOrScore(param)
+	if err != nil {
+		c.Error(err)
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{
+		"message":  "get post list success",
 		"postList": postList,
 	})
 }

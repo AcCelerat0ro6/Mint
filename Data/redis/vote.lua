@@ -1,5 +1,6 @@
 local personalKey = KEYS[1]
 local scoreKey = KEYS[2]
+local upvoteCountKey = KEYS[3]
 local userID = ARGV[1]
 local curValue = tonumber(ARGV[2])
 local postID = ARGV[3]
@@ -27,11 +28,23 @@ end
 
 -- 4. 计算分差 (假设每一票相差 432 分)
 local diff = (curValue - pastValue) * 432
+local upvoteDiff = 0
+
+if curValue == 1 and pastValue ~= 1 then
+    upvoteDiff = 1
+elseif pastValue == 1 and curValue ~= 1 then
+    upvoteDiff = -1
+end
 
 -- 5. 更新帖子总分
 redis.call('ZINCRBY', scoreKey, diff, postID)
 
--- 6. 更新个人记录
+-- 6. 更新帖子点赞数量
+if upvoteDiff ~= 0 then
+    redis.call('HINCRBY', upvoteCountKey, postID, upvoteDiff)
+end
+
+-- 7. 更新个人记录
 if curValue == 0 then
     redis.call('ZREM', personalKey, userID)
 else

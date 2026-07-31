@@ -30,8 +30,9 @@ var voteScript = redis.NewScript(voteLuaScript)
 func VoteForPost(userID string, postID string, curValue float64) error {
 	personalKey := KeyPrefix + KeyPostVotedZSetPrefix + postID
 	scoreKey := KeyPrefix + KeyPostScoreZSet
+	upvoteCountKey := KeyPrefix + KeyPostUpvoteCountHash
 
-	keys := []string{personalKey, scoreKey}
+	keys := []string{personalKey, scoreKey, upvoteCountKey}
 	args := []interface{}{userID, curValue, postID}
 
 	// 运行 Lua 脚本，保证原子性

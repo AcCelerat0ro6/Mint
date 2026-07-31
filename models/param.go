@@ -28,3 +28,10 @@ type CreatePostParam struct {
 	Title       string `json:"title"        binding:"required"`
 	Content     string `json:"content"      binding:"required"`
 }
+
+// GetPostListByTimeOrScoreParam 根据时间或分数获取帖子列表请求参数
+type GetPostListByTimeOrScoreParam struct {
+	Page  int    `form:"page"`
+	Size  int    `form:"size"`
+	Order string `form:"order"    binding:"omitempty,oneof=time score"`
+}
