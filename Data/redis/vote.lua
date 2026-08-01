@@ -1,9 +1,11 @@
 local personalKey = KEYS[1]
 local scoreKey = KEYS[2]
 local upvoteCountKey = KEYS[3]
+local postCommunityKey = KEYS[4]
 local userID = ARGV[1]
 local curValue = tonumber(ARGV[2])
 local postID = ARGV[3]
+local communityScorePrefix = ARGV[4]
 
 -- 1. 获取过去的值
 local pastValue = redis.call('ZSCORE', personalKey, userID)
@@ -38,6 +40,13 @@ end
 
 -- 5. 更新帖子总分
 redis.call('ZINCRBY', scoreKey, diff, postID)
+
+-- 5.1 同时更新该帖子所属社区的排行榜分数
+local communityID = redis.call('HGET', postCommunityKey, postID)
+if communityID then
+    local communityScoreKey = communityScorePrefix .. communityID
+    redis.call('ZINCRBY', communityScoreKey, diff, postID)
+end
 
 -- 6. 更新帖子点赞数量
 if upvoteDiff ~= 0 then

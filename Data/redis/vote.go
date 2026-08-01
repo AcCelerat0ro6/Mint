@@ -31,9 +31,10 @@ func VoteForPost(userID string, postID string, curValue float64) error {
 	personalKey := KeyPrefix + KeyPostVotedZSetPrefix + postID
 	scoreKey := KeyPrefix + KeyPostScoreZSet
 	upvoteCountKey := KeyPrefix + KeyPostUpvoteCountHash
+	postCommunityKey := KeyPrefix + KeyPostCommunityHash
 
-	keys := []string{personalKey, scoreKey, upvoteCountKey}
-	args := []interface{}{userID, curValue, postID}
+	keys := []string{personalKey, scoreKey, upvoteCountKey, postCommunityKey}
+	args := []interface{}{userID, curValue, postID, KeyPrefix + KeyCommunityPostScoreZSetPrefix}
 
 	// 运行 Lua 脚本，保证原子性
 	_, err := voteScript.Run(ctx, rdb, keys, args...).Result()

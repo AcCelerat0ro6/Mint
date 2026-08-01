@@ -10,21 +10,35 @@ import (
 	"github.com/redis/go-redis/v9"
 )
 
-func SavePostScoreAndTime(postID string) error {
+func SavePostScoreAndTime(postID string, communityID uint64) error {
 	curtime := time.Now()
+	cIDStr := strconv.FormatUint(communityID, 10)
 
 	_, err := rdb.TxPipelined(ctx, func(pipe redis.Pipeliner) error {
-		// 这里的 ZAdd 不会立即发往 Redis，而是缓存在管道中
+		// 1. 这里的 ZAdd 不会立即发往 Redis，而是缓存在管道中（全局ZSet）
 		pipe.ZAdd(ctx, KeyPrefix+KeyPostTimeZSet, redis.Z{
 			Score:  float64(curtime.Unix()),
 			Member: postID,
 		})
-
 		pipe.ZAdd(ctx, KeyPrefix+KeyPostScoreZSet, redis.Z{
 			Score:  float64(curtime.Unix()),
 			Member: postID,
 		})
 
+		// 2. 社区专属ZSet
+		pipe.ZAdd(ctx, KeyPrefix+KeyCommunityPostTimeZSetPrefix+cIDStr, redis.Z{
+			Score:  float64(curtime.Unix()),
+			Member: postID,
+		})
+		pipe.ZAdd(ctx, KeyPrefix+KeyCommunityPostScoreZSetPrefix+cIDStr, redis.Z{
+			Score:  float64(curtime.Unix()),
+			Member: postID,
+		})
+
+		// 3. 建立 postID -> communityID 映射 (用于投票时O(1)查找)
+		pipe.HSet(ctx, KeyPrefix+KeyPostCommunityHash, postID, communityID)
+
+		// 4. 帖子点赞汇总
 		pipe.HSet(ctx, KeyPrefix+KeyPostUpvoteCountHash, postID, 0)
 		return nil // 返回 nil 表示管道组装成功
 	})
@@ -36,10 +50,22 @@ func SavePostScoreAndTime(postID string) error {
 
 func GetPostIDsInOrder(param *models.GetPostListByTimeOrScoreParam) ([]string, error) {
 	var queryKey string
-	if param.Order == "time" {
-		queryKey = KeyPrefix + KeyPostTimeZSet
+
+	if param.CommunityID == 0 {
+		// 查全局
+		if param.Order == "time" {
+			queryKey = KeyPrefix + KeyPostTimeZSet
+		} else {
+			queryKey = KeyPrefix + KeyPostScoreZSet
+		}
 	} else {
-		queryKey = KeyPrefix + KeyPostScoreZSet
+		// 查社区
+		cIDStr := strconv.FormatUint(param.CommunityID, 10)
+		if param.Order == "time" {
+			queryKey = KeyPrefix + KeyCommunityPostTimeZSetPrefix + cIDStr
+		} else {
+			queryKey = KeyPrefix + KeyCommunityPostScoreZSetPrefix + cIDStr
+		}
 	}
 
 	startIndex := (param.Page - 1) * param.Size

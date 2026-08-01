@@ -31,7 +31,8 @@ type CreatePostParam struct {
 
 // GetPostListByTimeOrScoreParam 根据时间或分数获取帖子列表请求参数
 type GetPostListByTimeOrScoreParam struct {
-	Page  int    `form:"page"`
-	Size  int    `form:"size"`
-	Order string `form:"order"    binding:"omitempty,oneof=time score"`
+	Page        int    `form:"page"`
+	Size        int    `form:"size"`
+	Order       string `form:"order"        binding:"omitempty,oneof=time score"`
+	CommunityID uint64 `form:"community_id"` // 新增：若为 0 查全局，不为 0 查指定社区
 }

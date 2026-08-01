@@ -26,7 +26,7 @@ func CreatePost(post *models.CreatePostParam, userID uint64) (uint64, error) {
 	}
 
 	// 4. 保存初始帖子分数和帖子时间到Redis
-	if err := redis.SavePostScoreAndTime(strconv.FormatInt(postID, 10)); err != nil {
+	if err := redis.SavePostScoreAndTime(strconv.FormatInt(postID, 10), post.CommunityID); err != nil {
 		if rollbackErr := mysql.DeletePostByID(uint64(postID)); rollbackErr != nil {
 			return 0, errs.NewAppError(500, errs.CodeInternalError, "创建帖子失败，Redis 初始化失败且数据库补偿回滚失败", errors.Join(err, rollbackErr))
 		}
